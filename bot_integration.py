@@ -1,7 +1,7 @@
 import requests
 
 API_URL = "https://YOUR-APP.onrender.com"  # Cambia esto por tu URL de Render
-BOT_SECRET = "your-secret-here"  # Cambia esto por tu BOT_SECRET configurado
+BOT_SECRET = "8712217253:AAGmnCdbIYFLOKtaHQLjLoGlc7bWsDgo2xI"  # Cambia esto por tu BOT_SECRET configurado
 
 def register_key(key: str, duration_days: int):
     """
