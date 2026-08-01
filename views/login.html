@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Venom Modz x Guebo xit</title>
+    <style>
+        :root {
+            --accent: #6c47ff;
+            --bg: #0d0d14;
+            --surface: #13131f;
+            --surface2: #1a1a2e;
+            --border: #2a2a42;
+            --text: #e8e8f0;
+            --text-muted: #7a7a99;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        
+        input:focus {
+            border-color: var(--accent);
+        }
+        
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, var(--accent), #a855f7);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            margin-top: 1rem;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+        }
+        
+        .error-message {
+            background-color: rgba(255, 68, 68, 0.1);
+            color: #ff4444;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Venom Modz x Guebo xit</h1>
+        
+        <div id="error-box" class="error-message"></div>
+        
+        <form action="/Home/Login" method="POST">
+            <div class="form-group">
+                <label for="key">Ingrese su Llave de Acceso</label>
+                <input type="text" id="key" name="key" placeholder="WIDMAN-WEB-..." required autocomplete="off">
+            </div>
+            <button type="submit">ACCEDER</button>
+        </form>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        const errorBox = document.getElementById('error-box');
+        
+        if (error) {
+            errorBox.style.display = 'block';
+            if (error === 'invalid') {
+                errorBox.textContent = 'Key inválida';
+            } else if (error === 'expired') {
+                errorBox.textContent = 'Key expirada';
+            } else if (error === 'revoked') {
+                errorBox.textContent = 'Key revocada';
+            } else {
+                errorBox.textContent = 'Error de autenticación';
+            }
+        }
+    </script>
+</body>
+</html>
